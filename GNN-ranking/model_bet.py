@@ -31,19 +31,34 @@ class GNN_Bet(nn.Module):
         x_1 = F.normalize(F.relu(self.gc1(adj1)),p=2,dim=1)
         x2_1 = F.normalize(F.relu(self.gc1(adj2)),p=2,dim=1)
 
+        # x_1 = F.normalize(self.gc1(adj1),p=2,dim=1)
+        # x2_1 = F.normalize(self.gc1(adj2),p=2,dim=1)
+
 
         x_2 = F.normalize(F.relu(self.gc2(x_1, adj1)),p=2,dim=1)
         x2_2 = F.normalize(F.relu(self.gc2(x2_1, adj2)),p=2,dim=1)
 
+        # x_2 = F.normalize(self.gc2(x_1, adj1),p=2,dim=1)
+        # x2_2 = F.normalize(self.gc2(x2_1, adj2),p=2,dim=1)
+
 
         x_3 = F.normalize(F.relu(self.gc3(x_2,adj1)),p=2,dim=1)
         x2_3 = F.normalize(F.relu(self.gc3(x2_2,adj2)),p=2,dim=1)
+
+        # x_3 = F.normalize(self.gc3(x_2,adj1),p=2,dim=1)
+        # x2_3 = F.normalize(self.gc3(x2_2,adj2),p=2,dim=1)
         
         x_4 = F.normalize(F.relu(self.gc4(x_3,adj1)),p=2, dim=1)
         x2_4 = F.normalize(F.relu(self.gc4(x2_3,adj2)),p=2,dim=1)
 
+        # x_4 = F.normalize(self.gc4(x_3,adj1),p=2, dim=1)
+        # x2_4 = F.normalize(self.gc4(x2_3,adj2),p=2,dim=1)
+
         x_5 = F.relu(self.gc5(x_4,adj1))
         x2_5 = F.relu(self.gc4(x2_4,adj2))
+
+        # x_5 = self.gc5(x_4,adj1)
+        # x2_5 = self.gc4(x2_4,adj2)
 
         #Score Calculations
 

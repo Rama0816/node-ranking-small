@@ -9,7 +9,7 @@ np.random.seed(1)
 
 def create_graph(graph_type):
 
-    num_nodes = np.random.randint(5000,10000)
+    num_nodes = np.random.randint(30, 50)
 
     if graph_type == "ER":
         #Erdos-Renyi random graphs
@@ -75,7 +75,7 @@ def cal_exact_close(g_nx):
 
 
 num_of_graphs = 50
-graph_types = ["ER","SF","GRP"]
+graph_types = ["ER","SF"]
 
 for graph_type in graph_types:
     print("###################")

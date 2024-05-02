@@ -12,7 +12,7 @@ def reorder_list(input_list,serial_list):
 
 def create_dataset(list_data,num_copies):
 
-    adj_size = 10000
+    adj_size = 50
     num_data = len(list_data)
     total_num = num_data*num_copies
     cent_mat = np.zeros((adj_size,total_num),dtype=np.float64)
@@ -75,8 +75,8 @@ def get_split(source_file,num_train,num_test,num_copies,adj_size,save_path):
 
 #creating training/test dataset split for the model
 
-adj_size = 10000
-graph_types = ["ER","SF","GRP"]
+adj_size = 50
+graph_types = ["ER","SF"]
 num_train = 40
 num_test = 10
 #Number of permutations for node sequence
@@ -100,8 +100,6 @@ for g_type in graph_types:
     #save closeness split
     get_split(close_source_file,num_train,num_test,num_copies,adj_size,save_path_close)
     print(" Data split saved.")
-
-
 
 
 

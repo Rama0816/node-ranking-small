@@ -92,9 +92,11 @@ class MLP(Module):
     def forward(self,input_vec,dropout):
 
         score_temp = F.relu(self.linear1(input_vec))
-        score_temp = F.dropout(score_temp,self.dropout)
+        # score_temp = self.linear1(input_vec)
+        score_temp = F.dropout(score_temp,self.dropout, self.training)
         score_temp = F.relu(self.linear2(score_temp))
-        score_temp = F.dropout(score_temp,self.dropout)
+        # score_temp = self.linear2(score_temp)
+        score_temp = F.dropout(score_temp,self.dropout, self.training)
         score_temp = self.linear3(score_temp)
 
         return score_temp
